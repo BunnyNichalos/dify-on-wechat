@@ -3,9 +3,16 @@ from common.log import logger
 
 
 class DashscopeSession(Session):
-    def __init__(self, session_id, system_prompt=None, model="qwen-turbo"):
+    def __init__(self, session_id, system_prompt=None, model="qwen-turbo", conversation_id: str=''):
         super().__init__(session_id)
+        self.conversation_id = conversation_id
         self.reset()
+
+    def get_conversation_id(self):
+        return self.conversation_id
+
+    def set_conversation_id(self, conversation_id):
+        self.conversation_id = conversation_id
 
     def discard_exceeding(self, max_tokens, cur_tokens=None):
         precise = True
