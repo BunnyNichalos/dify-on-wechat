@@ -52,6 +52,9 @@ def create_bot(bot_type):
     elif bot_type == const.QWEN_DASHSCOPE:
         from bot.dashscope.dashscope_bot import DashscopeBot
         return DashscopeBot()
+    elif bot_type == const.QWEN_DASHSCOPE_APP:
+        from bot.dashscope.dashscope_app import DashscopeApp
+        return DashscopeApp()
     elif bot_type == const.GEMINI:
         from bot.gemini.google_gemini_bot import GoogleGeminiBot
         return GoogleGeminiBot()
