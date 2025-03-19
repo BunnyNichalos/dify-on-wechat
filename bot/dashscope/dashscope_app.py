@@ -86,10 +86,11 @@ class DashscopeApp(Bot):
                 prompt=session.messages[-1]
             )
             if response.status_code == HTTPStatus.OK:
-                content = response.output.choices[0]["message"]["content"]
+                content = response.output.text
+                models_usage = response.usage["models"][0]
                 return {
-                    "total_tokens": response.usage["total_tokens"],
-                    "completion_tokens": response.usage["output_tokens"],
+                    "total_tokens": models_usage["input_tokens"] + models_usage["output_tokens"],
+                    "completion_tokens": models_usage["output_tokens"],
                     "content": content,
                     "conversation_id": response.output.session_id
                 }

@@ -11,11 +11,10 @@ services:
     
     # image: hanfangyuan/dify-on-wechat:latest # docker hub
     # image: hanfangyuan/dify-on-wechat:arm64  # docker hub arm64
-    image: registry.cn-hangzhou.aliyuncs.com/hanfangyuan/dify-on-wechat:latest # acr
+    image: registry.cn-hangzhou.aliyuncs.com/bawei_k8s/dify-on-wechat:1.0 # acr
     # image: registry.cn-hangzhou.aliyuncs.com/hanfangyuan/dify-on-wechat:arm64 # acr arm64
     user: root
     restart: always
-    pull_policy: always
     container_name: dify-on-wechat
     security_opt:
       - seccomp:unconfined
@@ -49,7 +48,10 @@ services:
       # COZE_API_BASE: 'https://api.coze.cn/open_api/v2'
       # COZE_API_KEY: 'xxx'
       # COZE_BOT_ID: 'xxx'
-      
+
+      DASHSCOPE_API_KEY: 'sk-a0fe9c68cdbc47908d60f0f39e84365e',
+      DASHSCOPE_APP_ID: 'cb395843f1b14517b07bfdc990a17cf4',
+      DASHSCOPE_WORKSPACE: 'llm-43ex4kyqfgym2oyg'
       # 更多配置请查看 config.py
     ports:
       - "7860:7860"
